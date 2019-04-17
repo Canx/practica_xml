@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE factures SYSTEM "factures.xsd">
+<factures>
+    <productes>
+        <producte codi="..." preu="...">
+        	<nom>...</nom>
+        	<tipus>blanc|negre|rosat</tipus>
+        	<format>1|2|3|5</format>
+        </producte>
+    </productes>
+    <factura num="">
+	   <client>
+               <nom></nom>
+	       <cognoms></cognoms>
+	       <contacte>
+		  <telefon tipus="movil" ambit="privat"></telefon>
+		  <telefon tipus="fixe" ambit="public"></telefon>
+	       </contacte>
+           </client>
+	   <compra>
+	      <unitats producte="..."></unitats>
+	      <unitats producte="..."></unitats>
+           </compra>
+   </factura>
+</factures>

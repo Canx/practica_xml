@@ -1,0 +1,62 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="factures" type="facturesType"/>
+  <xs:complexType name="producteType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="nom"/>
+      <xs:element type="xs:string" name="tipus"/>
+      <xs:element type="xs:string" name="format"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="codi" use="optional"/>
+    <xs:attribute type="xs:string" name="preu" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="productesType">
+    <xs:sequence>
+      <xs:element type="producteType" name="producte" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="telefonType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="tipus" use="optional"/>
+        <xs:attribute type="xs:string" name="ambit" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="contacteType">
+    <xs:sequence>
+      <xs:element type="telefonType" name="telefon" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="clientType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="nom"/>
+      <xs:element type="xs:string" name="cognoms"/>
+      <xs:element type="contacteType" name="contacte"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="unitatsType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="producte" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="compraType">
+    <xs:sequence>
+      <xs:element type="unitatsType" name="unitats" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="facturaType">
+    <xs:sequence>
+      <xs:element type="clientType" name="client"/>
+      <xs:element type="compraType" name="compra"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="num"/>
+  </xs:complexType>
+  <xs:complexType name="facturesType">
+    <xs:sequence>
+      <xs:element type="productesType" name="productes"/>
+      <xs:element type="facturaType" name="factura"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
